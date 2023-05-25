@@ -12,6 +12,18 @@ Key tasks:
 - Include at least one unit test to demonstrate the setup of a comprehensive testing suite.
 - Focus on developing an MVP version, and any potential further extensions can be discussed separately without the need for immediate implementation.
 
+## Local dev
+
+Well local-ish, your local code will be running, but it'll semi-deployed to AWS through [SST magic](https://docs.sst.dev/live-lambda-development).
+
+```sh
+npm install
+```
+
+```sh
+npm run dev
+```
+
 ## Notes
 
 - Tests
