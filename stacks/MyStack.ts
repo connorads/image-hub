@@ -1,11 +1,15 @@
-import { StackContext, Api } from "sst/constructs";
+import { StackContext, Api, Bucket } from "sst/constructs";
 
-export function API({ stack }: StackContext) {
+export function MyStack({ stack }: StackContext) {
+  const bucket = new Bucket(stack, "Uploads");
+
   const api = new Api(stack, "api", {
     routes: {
-      "GET /": "packages/functions/src/lambda.handler",
+      "GET /images/{id}": { function: { handler: "packages/functions/src/get-image.handler", bind: [bucket] } },
+      "POST /images": { function: { handler: "packages/functions/src/upload-image.handler", bind: [bucket] } },
     },
   });
+
   stack.addOutputs({
     ApiEndpoint: api.url,
   });
