@@ -24,6 +24,12 @@ npm install
 npm run dev
 ```
 
+## Local testing
+
+If you're using VS Code you can use the [Rest Client Extension](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) and [test.http](test.http)
+
+Just make sure to set the `@host` value to your API gateway URL from your deployment
+
 ## Notes
 
 - Tests

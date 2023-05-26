@@ -17,14 +17,14 @@ export const handler = ApiHandler(async (event) => {
     
     try {
         const id = nanoid();
-        const filename = `${id}.${fileType.ext}`;
         const key = `${id}/${fileType.ext}`
         const putObjectCommand = new PutObjectCommand({ Bucket: Bucket.Uploads.bucketName, Key: key, Body: image });
         await client.send(putObjectCommand);
 
         return {
             statusCode: 201,
-            body: JSON.stringify({ filename: filename }),
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ id: id }),
         };
     } catch (error) {
         return {
